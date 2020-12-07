@@ -54,19 +54,6 @@ namespace osu.Game.Rulesets.Osu.Objects.Drawables
             CheckHittable = (d, t) => DrawableSlider.CheckHittable?.Invoke(d, t) ?? true;
         }
 
-        protected override void Update()
-        {
-            base.Update();
-
-            Debug.Assert(Slider != null);
-
-            double completionProgress = Math.Clamp((Time.Current - Slider.StartTime) / Slider.Duration, 0, 1);
-
-            //todo: we probably want to reconsider this before adding scoring, but it looks and feels nice.
-            if (!IsHit)
-                Position = Slider.CurvePositionAt(completionProgress);
-        }
-
         public Action<double> OnShake;
 
         public override void Shake(double maximumLength) => OnShake?.Invoke(maximumLength);
