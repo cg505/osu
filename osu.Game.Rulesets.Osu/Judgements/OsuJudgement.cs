@@ -9,5 +9,24 @@ namespace osu.Game.Rulesets.Osu.Judgements
     public class OsuJudgement : Judgement
     {
         public override HitResult MaxResult => HitResult.Great;
+
+        public override int NumericResultFor(JudgementResult result) => ToNumericResult(result.Type);
+
+        public new static int ToNumericResult(HitResult result)
+        {
+            switch (result)
+            {
+                // Override Ok and Meh
+                case HitResult.Meh:
+                    return 100;
+
+                case HitResult.Ok:
+                    return 200;
+
+                default:
+                    return Judgement.ToNumericResult(result);
+            }
+        }
+
     }
 }

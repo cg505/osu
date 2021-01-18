@@ -11,6 +11,10 @@ namespace osu.Game.Rulesets.Osu.Scoring
 {
     public class OsuScoreProcessor : ScoreProcessor
     {
+        protected override double DefaultAccuracyPortion => 1;
+
+        protected override double DefaultComboPortion => 0;
+
         protected override HitEvent CreateHitEvent(JudgementResult result)
             => base.CreateHitEvent(result).With((result as OsuHitCircleJudgementResult)?.CursorPositionAtHit);
 
