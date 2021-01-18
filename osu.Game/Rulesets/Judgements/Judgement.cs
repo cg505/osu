@@ -94,7 +94,7 @@ namespace osu.Game.Rulesets.Judgements
         /// </summary>
         /// <param name="result">The <see cref="JudgementResult"/> to find the numeric score representation for.</param>
         /// <returns>The numeric score representation of <paramref name="result"/>.</returns>
-        public int NumericResultFor(JudgementResult result) => ToNumericResult(result.Type);
+        public virtual int NumericResultFor(JudgementResult result) => ToNumericResult(result.Type);
 
         /// <summary>
         /// Retrieves the numeric health increase of a <see cref="HitResult"/>.
